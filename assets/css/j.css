@@ -1,0 +1,200 @@
+.background-header {
+    background-color: #22b3c1 !important;
+    height: 70px!important;
+    position: fixed!important;
+    top: 0!important;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15)!important;
+    -webkit-transition: all .5s ease 0s;
+    -moz-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
+  }
+  .header-area {
+    background-color: #22b3c1;
+    position: absolute;
+    height: 70px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    position: fixed;
+    -webkit-transition: all .5s ease 0s;
+    -moz-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
+  }
+  
+  .header-area .main-nav {
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     padding: 0 15px; 
+    
+    
+    /* padding: 0px 30px;  */
+  }
+  
+  .background-header .main-nav {
+    padding: 0px;
+    background-color: transparent;
+  }
+  
+  .header-area .main-nav .logo {
+    flex-basis: 30%;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .header-area .main-nav .logo img {
+    width: 159px;
+    margin-top: 15px;
+  }
+  
+  .background-header .main-nav .logo img {
+    width: 159px;
+  }
+  
+  /* .header-area .main-nav .nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  .header-area .main-nav .nav {
+    flex-basis: 70%;
+    justify-content: flex-end;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-right: 0px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    position: relative;
+    z-index: 999;
+  }
+  
+  .header-area .main-nav .nav li {
+    /* padding: 0 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .header-area .main-nav .nav li a {
+    /* color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px; */
+  
+    display: flex;
+    font-weight: 400;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #fff;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    border: transparent;
+    padding: 8px 15px;
+    position: relative;
+    border-radius: 18px;
+    letter-spacing: 0.5px;
+  }
+  
+  .header-area .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover,
+  .background-header .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover {
+    padding-left: 25px !important;
+  }
+  
+  .header-area .main-nav .nav li:hover a {
+    opacity: 0.8;
+  }
+  
+  .header-area .main-nav .nav li a.active::after {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    content: '';
+    left: 15px;
+    top: 2px;
+  }
+  
+  .background-header .main-nav .nav li:hover a,
+  .background-header .main-nav .nav li a.active {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  .header-area .main-nav .nav li.has-sub {
+    position: relative;
+    padding-right: 15px;
+  }
+  
+  /* .header-area .main-nav .nav li a:hover,
+  .header-area .main-nav .nav li a.active {
+    background-color: rgba(255, 55, 255, 0.2);
+  } */
+  
+  /* Menu trigger styles */
+  .menu-trigger {
+    display: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    /* top: 16px; isnt doing anything */
+  }
+  
+  .background-header .main-nav .menu-trigger {
+    top: 17px;
+  }
+  
+  
+  .menu-trigger span {
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  .header-area.header-sticky {
+    min-height: 70px;
+  }
+  
+  .header-area.header-sticky .nav li a.active {
+    color: #fff;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .menu-trigger {
+      display: block;
+    }
+  
+    .header-area .main-nav .nav {
+      display: none;
+      flex-direction: column;
+      background-color: #22b3c1;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 15px 0;
+    }
+  
+    .header-area .main-nav .nav li {
+      text-align: center;
+      margin: 10px 0;
+    }
+  
+    .header-area .main-nav.active .nav {
+      display: flex;
+    }
+  }
