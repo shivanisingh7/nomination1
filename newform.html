@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>IIIT-Delhi Young Alumni Awards Nomination Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/mycss.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+
+        .content {
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Keep other existing styles if needed */
+        ul {
+            padding-left: 20px;
+            list-style-type: disc;
+            color: #22b3c1;
+            z-index: 2;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+        
+
+         h2 {
+            text-align: center;
+            padding: 20px 0;
+
+            color: white;
+            margin: 0;
+        } 
+
+        form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Increased blur radius and shadow intensity */
+}
+
+
+        h3 {
+            color: #22b3c1;
+            border-bottom: 2px solid rgba(34, 179, 193,255);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .centered-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        label,select {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="url"], input[type="tel"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        input[type="submit"] {
+            background-color: #C5B9A5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005fa3;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .section {
+            padding: 20px 0;
+        }
+
+        .section:not(.hidden) {
+            margin-top: 30px;
+        }
+
+        .file-input {
+            padding: 5px 0;
+        }
+
+        .file-input input[type="file"] {
+            padding: 0;
+            border: none;
+        }
+        .banner {
+            width: 100%; /* Makes the div take up the full width of the screen */
+            overflow: hidden; /* Ensures no content spills outside the banner */
+            margin-top: 20px;
+            margin-bottom: 3%;
+        }
+
+        .banner img {
+            width: 100%; /* Makes the image take up the full width of the parent */
+            height: auto; /* Maintains the aspect ratio of the image */
+            display: block; /* Removes the bottom gap that images sometimes have */
+        } 
+
+        
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .captcha-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            background: #f9f9f9;
+            padding: 10px;
+            letter-spacing: 3px;
+            text-align: center;
+            user-select: none;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 150px;
+        }
+
+        .refresh-btn {
+            /* margin-left: 10px;
+            cursor: pointer;
+            color: #3498db;
+            text-decoration: underline; */
+            margin-left: 10px;
+            width: 30px; /* Adjust the size of the image */
+            height: 30px; /* Adjust the size of the image */
+            cursor: pointer;
+            transition: transform 0.2s ease; /* Adds a hover effect */
+
+        }
+
+        .refresh-btn:hover {
+  transform: rotate(360deg); /* Rotates the icon on hover */
+}
+
+        .captcha-input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+        .footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-size: 14px;
+        }
+
+       
+
+     
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const menuTrigger = document.querySelector('.menu-trigger');
+          const nav = document.querySelector('.main-nav');
+      
+          menuTrigger.addEventListener('click', function () {
+            nav.classList.toggle('active');
+          });
+        });
+      </script>
+    
+    <script>
+        
+        function toggleNominationFields() {
+    var nomination = document.getElementById("nomination").value;
+    var formContent = document.getElementById("form-content");
+    var nomineeFields = document.getElementById("nominee-fields");
+    var yourFields = document.getElementById("your-fields");
+    var sharedFields = document.getElementById("shared-fields");
+    var yourRoleField = document.getElementById("your-role-field");
+    var criteriaSection = document.getElementById("criteria-section");
+    var selfNominationQuestion = document.getElementById("self-nomination-question");
+    var nomineeSupportDocs = document.getElementById("nominee-support-docs");
+
+    // Show form content by default
+    formContent.style.display = "block";
+
+    if (nomination === "yourself") {
+        nomineeFields.style.display = "none"; // Hide nominee fields
+        yourFields.style.display = "block"; // Show your fields
+        sharedFields.style.display = "block"; // Show shared fields
+
+        // Hide Your Role in IIITD field
+        yourRoleField.classList.add("hidden");
+
+        // Show criteria section, hide self-nomination additional question
+        criteriaSection.classList.remove("hidden");
+        selfNominationQuestion.classList.add("hidden");
+
+        // Hide nominee supporting documents
+        nomineeSupportDocs.classList.add("hidden");
+    } else {
+        nomineeFields.style.display = "block"; // Show nominee fields
+        yourFields.style.display = "block"; // Show your fields
+        sharedFields.style.display = "block"; // Show shared fields
+
+        // Show Your Role in IIITD field
+        yourRoleField.classList.remove("hidden");
+
+        // Hide criteria section and reset checkboxes
+        criteriaSection.classList.add("hidden");
+        var criteriaCheckboxes = document.querySelectorAll('input[name="criteria"]');
+        criteriaCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = false; // Uncheck all criteria checkboxes
+        });
+
+        // Hide all criteria-related fields
+        document.getElementById("notable-field").classList.add("hidden");
+        document.getElementById("tech-field").classList.add("hidden");
+        document.getElementById("society-field").classList.add("hidden");
+        document.getElementById("leadership-field").classList.add("hidden");
+        document.getElementById("testimonies-section").classList.add("hidden");
+
+        // Show nominee supporting documents
+        nomineeSupportDocs.classList.remove("hidden");
+
+        // Show self-nomination additional question
+        selfNominationQuestion.classList.remove("hidden");
+    }
+}
+
+
+
+        function toggleCriteriaFields() {
+            var criteria = document.querySelectorAll('input[name="criteria"]:checked');
+            var notableField = document.getElementById("notable-field");
+            var techField = document.getElementById("tech-field");
+            var societyField = document.getElementById("society-field");
+            var leadershipField = document.getElementById("leadership-field");
+            var testimonies = document.getElementById("testimonies-section");
+
+            notableField.classList.add('hidden');
+            techField.classList.add('hidden');
+            societyField.classList.add('hidden');
+            leadershipField.classList.add('hidden');
+            testimonies.classList.add('hidden');
+
+            criteria.forEach(function (item) {
+                if (item.value === "contribution_field") {
+                    notableField.classList.remove('hidden');
+                }
+                if (item.value === "contribution_technology") {
+                    techField.classList.remove('hidden');
+                }
+                if (item.value === "contribution_society") {
+                    societyField.classList.remove('hidden');
+                }
+                if (item.value === "contribution_leadership") {
+                    leadershipField.classList.remove('hidden');
+                }
+            });
+
+            if (criteria.length > 0) {
+                testimonies.classList.remove('hidden');
+            }
+        }
+
+        let captcha; // To store the generated CAPTCHA code
+
+    // Function to generate CAPTCHA
+    function generateCaptcha() {
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let code = "";
+        for (let i = 0; i < 7; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        captcha = code;
+        document.getElementById("captcha").innerText = captcha;
+    }
+
+    // Function to validate CAPTCHA
+    function validateCaptcha() {
+        const userInput = document.getElementById("captchaInput").value;
+        const message = document.getElementById("message");
+
+        if (userInput === captcha) {
+            message.innerText = "CAPTCHA Verified Successfully!";
+            message.className = "message success";
+            return true; // Allow form submission
+        } else {
+            message.innerText = "CAPTCHA Verification Failed. Try Again!";
+            message.className = "message error";
+            return false; // Prevent form submission
+        }
+    }
+
+    // Generate CAPTCHA on page load
+    generateCaptcha();
+
+
+    
+    
+    </script>
+  </head>
+
+<body>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a href="index.html" class="logo">
+                        <!-- <img src="assets/images/hehe3.png" alt=""> -->
+                        <img src="assets/images/logo5.png" alt="" style="height: 50px; width: auto;">
+
+                    </a>
+                    <ul class="nav">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="newform.html" class="active">Nomination Form</a></li>
+                        <li><a href="new_gall.html">Previous Awardees</a></li>
+                        <li><a href="https://alumni.iiitd.ac.in/" target="_blank">Alumni Website</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+
+  <!-- ***** Header Area End ***** -->
+
+<h2>Young Alumni Award Nomination Form</h2> 
+<div class="banner">
+    <img src="assets/images/banner.png" alt="IIIT Delhi Foundation Day Banner">
+</div> 
+
+
+
+
+
+
+<!-- <form action="/submit" method="post" enctype="multipart/form-data"> -->
+    <form action="hh.php" method="post" enctype="multipart/form-data" onsubmit="return validateCaptcha()" >
+    <label for="nomination">*Who are you nominating?</label>
+    <select id="nomination" name="nomination" onchange="toggleNominationFields()" required>
+        <option value="" disabled selected>--Select--</option>
+        <option value="yourself">Nominating Yourself</option>
+        <option value="someone_else">Nominating Someone Else</option>
+    </select>
+
+    <div id="form-content" style="display: none;">
+        <div id="your-fields" class="section">
+            <h3>Your Contact Information</h3>
+            <label for="your_title">*Title:</label>
+            <input type="text" id="your_title" name="your_title"  placeholder="Eg: Mr, Mrs, Miss, Dr, Prof" required>
+
+            <label for="your_name">*Your Name:</label>
+            <input type="text" id="your_name" name="your_name" required>
+
+            <label for="your_email">*Email ID:</label>
+            <input type="email" id="your_email" name="your_email" required>
+
+            <label for="your_phone">*Your Phone Number:</label>
+            <input type="tel" id="your_phone" name="your_phone" required>
+
+            <!-- <label for="your_role">*Your Role in IIITD:</label>
+            <select id="your_role" name="your_role" required>
+                Options will be dynamically set based on selection
+            </select> -->
+
+            <div id="your-role-field" class="hidden">
+                <label for="your_role">*Your Role in IIITD:</label>
+                <select id="your_role" name="your_role">
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="staff">Staff</option>
+                    <option value="fellow_alumni">Fellow Alumni</option>
+                    <option value="student">Student</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        
+        
+        
+        
+        
+        </div>
+
+        <div id="nominee-fields" class="section hidden">
+            <h3>Your Nominee’s Contact Information</h3>
+            <label for="nominee_title">*Nominee's Title:</label>
+            <input type="text" id="nominee_title" name="nominee_title" placeholder="Eg: Mr, Mrs, Miss, Dr, Prof">
+
+            <label for="nominee_name">*Nominee's Name:</label>
+            <input type="text" id="nominee_name" name="nominee_name">
+
+            <label for="nominee_email">*Nominee's Email ID:</label>
+            <input type="email" id="nominee_email" name="nominee_email">
+
+            <label for="nominee_phone">Nominee's Phone Number:</label>
+            <input type="tel" id="nominee_phone" name="nominee_phone">
+        </div>
+
+        <div id="shared-fields" class="section hidden">
+            <h3>Program Details</h3>
+            <label for="program">*Program:</label>
+            <select id="program" name="program" required>
+                <option value="" disabled selected>--Select--</option>
+                <option value="btech">B.Tech</option>
+                <option value="mtech">M.Tech</option>
+                <option value="dual_degree">Dual Degree</option>
+                <option value="phd">Ph.D.</option>
+                <option value="diploma">Diploma Program</option>
+            </select>
+
+            <label for="graduation_year">*Year of Graduation:</label>
+            <select id="nomineeYear" name="nomineeYear" required>
+                <option value="" disabled selected>--Select--</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+
+            <label for="organisation">*Current Organisation:</label>
+            <input type="text" id="organisation" name="organisation" required>
+
+            <label for="designation">*Current Designation:</label>
+            <input type="text" id="designation" name="designation" required>
+
+            <label for="linkedin">*LinkedIn Profile Link:</label>
+            <input type="url" id="linkedin" name="linkedin" required>
+
+            <!-- Additional question for nominating someone else -->
+            <!-- <div id="self-nomination-question" class="hidden"> -->
+            <label for="self_reason">*Please briefly tell us why you feel you or your nominee should be considered for the Young Alumni Award (suggested: 200 words). 
+            </label>
+            <textarea id="self_reason" name="self_reason" rows="4"></textarea>
+            <!-- </div> -->
+
+            <!-- Criteria Section (only for nominating yourself) -->
+            <div id="criteria-section" class="hidden">
+                <h3>Please select the category you want to nominate yourself in (you can select more than one)</h3>
+                <input type="checkbox" name="criteria" value="contribution_field" onclick="toggleCriteriaFields()"> Notable contribution to field of work or knowledge<br>
+                <input type="checkbox" name="criteria" value="contribution_technology" onclick="toggleCriteriaFields()"> Notable contribution to technological innovation/discipline<br>
+                <input type="checkbox" name="criteria" value="contribution_society" onclick="toggleCriteriaFields()"> Notable contribution to society/community/alma mater<br>
+                <input type="checkbox" name="criteria" value="contribution_leadership" onclick="toggleCriteriaFields()"> Notable contribution to leadership/entrepreneurship<br>
+            </div>
+        </div>
+
+        <!-- Criteria Sections -->
+        <!-- A) Notable contribution to field of work or knowledge -->
+        <div id="notable-field" class="section hidden">
+            <h3>Notable contribution to field of work or knowledge</h3>
+            <label for="accomplishments">Please share your notable accomplishments in the current role:</label>
+            <textarea id="accomplishments" name="accomplishments" rows="4"></textarea>
+            <label for="projects">1. In case there are any specific projects/collaborations with higher contributions from your end, please provide the details along with necessary proofs:</label>
+            <textarea id="projects" name="projects" rows="4"></textarea>
+            <label for="publications">2. Notable publications in journals/conferences, books/book chapters with contribution as first author (Please categorize the publications into Tier 1, Tier 2, A*, A, etc.):</label>
+            <textarea id="publications" name="publications" rows="4"></textarea>
+            <label for="talks">3. Have you given any invited talks related to your field of work? If yes, please share the list of these talks along with necessary proofs:</label>
+            <textarea id="talks" name="talks" rows="4"></textarea>
+            <label for="awards">4. Have you received any awards for your work? If yes, please share the details along with necessary proofs:</label>
+            <textarea id="awards" name="awards" rows="4"></textarea>
+            <label for="services">5. Have you made any contribution to professional services (eg: editor/reviewer in journals)? If yes, please share the details along with necessary proofs:</label>
+            <textarea id="services" name="services" rows="4"></textarea>
+        </div>
+
+        <!-- B) Notable contribution to technological innovation/discipline -->
+        <div id="tech-field" class="section hidden">
+            <h3>Notable contribution to technological innovation/discipline</h3>
+            <label for="patents">1. Do you have any patents? If yes, please provide the details along with necessary proofs:</label>
+            <textarea id="patents" name="patents" rows="4"></textarea>
+            <label for="research_projects">2. Do you have any research projects/innovations that have been deployed as technology transfer on ground? If yes, please provide the details along with necessary proofs, and mention the Technology Readiness Level (TRL) of each project:</label>
+            <textarea id="research_projects" name="research_projects" rows="4"></textarea>
+            <label for="innovation_awards">3. Have you received any awards for your innovation? If yes, please share the details along with necessary proofs:</label>
+            <textarea id="innovation_awards" name="innovation_awards" rows="4"></textarea>
+        </div>
+
+        <!-- C) Notable contribution to society/community -->
+        <div id="society-field" class="section hidden">
+            <h3>Notable contribution to society/community</h3>
+            <label for="impact_projects">1. Have you contributed to any projects that have made a significant impact on society? If yes, please provide the details along with necessary proofs:</label>
+            <textarea id="impact_projects" name="impact_projects" rows="4"></textarea>
+            <label for="community_work">2. Have you been involved in any community work that has had a major impact? Please provide the details along with necessary proofs:</label>
+            <textarea id="community_work" name="community_work" rows="4"></textarea>
+            <label for="alma_mater_contribution">3. Have you been involved in any service to your alma mater i.e. IIIT-Delhi? Please provide the details along with necessary proofs:</label>
+            <textarea id="alma_mater_contribution" name="alma_mater_contribution" rows="4"></textarea>
+            <label for="community_awards">4. Have you received any awards for your community work? If yes, please share the details along with necessary proofs:</label>
+            <textarea id="community_awards" name="community_awards" rows="4"></textarea>
+        </div>
+
+        <!-- D) Notable contribution to leadership/entrepreneurship -->
+        <div id="leadership-field" class="section hidden">
+            <h3>Notable contribution to leadership/entrepreneurship</h3>
+            <label for="leadership_initiatives">1. Please describe your significant accomplishments/initiatives in a leadership role:</label>
+            <textarea id="leadership_initiatives" name="leadership_initiatives" rows="4"></textarea>
+            <label for="ventures">2. Have you founded or co-founded any venture/company? If yes, please share information about your company along with the website link:</label>
+            <textarea id="ventures" name="ventures" rows="4"></textarea>
+            <label for="business_usp">3. What is the USP of your business, and how is it making a contribution in the upliftment of society or the nation?</label>
+            <textarea id="business_usp" name="business_usp" rows="4"></textarea>
+            <label for="startup_valuation">4. What is the current valuation of your startup? Please share necessary proofs:</label>
+            <textarea id="startup_valuation" name="startup_valuation" rows="4"></textarea>
+            <label for="startup_investments">5. Has your startup received any investments or funding? If yes, please share the details along with the necessary proofs:</label>
+            <textarea id="startup_investments" name="startup_investments" rows="4"></textarea>
+        </div>
+
+        <!-- E) Testimonies (Common for all criteria) -->
+        <div id="testimonies-section" class="section hidden">
+            <h3>Testimonies</h3>
+            <label for="testimonies">Please attach documents to support your or your nominee's candidature:</label>
+            <div class="file-input">
+                <input type="file" id="testimonies" name="testimonies" accept=".pdf">
+            </div>
+        </div>
+
+        <!-- Additional question for nominating someone else -->
+        <div id="nominee-support-docs" class="hidden">
+            <h3>Additional Supporting Documents</h3>
+            <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
+            <div class="file-input">
+                <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
+            </div>
+        </div>
+        
+
+    </div>
+
+    
+         <!-- CAPTCHA Section -->
+    <!-- <div class="captcha-container">
+        <div class="captcha-code" id="captcha"></div>
+        <span class="refresh-btn" onclick="generateCaptcha()">Refresh</span>
+    </div>
+    <input type="text" id="captchaInput" class="captcha-input" placeholder="Enter CAPTCHA" required /> -->
+    <div class="captcha-container">
+        <div class="captcha-code" id="captcha"></div>
+        <img 
+          src="assets/images/captcha.jpg" 
+          alt="Refresh CAPTCHA" 
+          class="refresh-btn" 
+          onclick="generateCaptcha()" />
+      </div>
+      <input type="text" id="captchaInput" class="captcha-input" placeholder="Enter CAPTCHA" required />
+      
+
+    <div id="message" class="message"></div>
+        <input type="submit" value="Submit Nomination">
+    </div>
+
+</form>
+<footer class="footer">
+    IIIT-Delhi Young Alumni Awards
+  </footer>
+
+  
+
+  </body>
+</html>

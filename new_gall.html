@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>IIIT-Delhi Young Alumni Awards Nomination Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/mycss.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+    <style>
+        
+        /* Section Styling */
+        .cards-section {
+            background-color: #f0f0f0; /* Gray background for the section */
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        /* Section Heading */
+        .cards-section h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Gallery Section */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
+            gap: 30px; /* Space between cards */
+            justify-items: center;
+        }
+
+        .gallery-item {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Card Layout */
+        .gallery-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px; /* Controls card width */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px); /* Adds a hover effect */
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Emphasized shadow on hover */
+        }
+
+        /* Image Styling */
+        .gallery-img {
+            width: 200px; /* Increased size for better visibility */
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%; /* Makes images circular */
+            border: 3px solid #22b3c1;
+            margin-bottom: 15px;
+        }
+
+        /* Text Styling */
+        .gallery-card h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .gallery-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .gallery-card span {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        /* New Section Styling */
+        .new-section {
+            background-color: #343541;
+
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .new-section h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .new-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .new-card {
+            background-color: #333;
+            border-radius: 10px;
+            width: 540px; /* Increased width by 20% */
+            height: 300px; /* Increased height by 20% */
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .new-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .new-card:hover img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .new-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .new-card-title {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .new-card-subtitle {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-size: 14px;
+        }
+
+            
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const menuTrigger = document.querySelector('.menu-trigger');
+          const nav = document.querySelector('.main-nav');
+      
+          menuTrigger.addEventListener('click', function () {
+            nav.classList.toggle('active');
+          });
+        });
+      </script>
+    </head>
+
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a href="index.html" class="logo">
+                        <!-- <img src="assets/images/hehe3.png" alt=""> -->
+                        <img src="assets/images/logo5.png" alt="" style="height: 50px; width: auto;">
+
+                    </a>
+                    <ul class="nav">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="newform.html" >Nomination Form</a></li>
+                        <li><a href="new_gall.html" class="active">Previous Awardees</a></li>
+                        <li><a href="https://alumni.iiitd.ac.in/" target="_blank">Alumni Website</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+
+<!-- ***** Cards Section ***** -->
+<section class="cards-section">
+    <h1>Previous Awardees</h1>
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <div class="gallery-card">
+                <img src="assets/gallery/Nipun_Batra_resized (1).jpg" alt="Dr. Nipun Batra" class="gallery-img">
+                <h4>DR. NIPUN BATRA</h4>
+                <p>PH.D. CSE, CLASS OF 2017</p>
+                <p><span>Year: 2023</span></p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-card">
+                <img src="assets/gallery/Raghav_Sethi_resized (1).jpg" alt="Raghav Sethi" class="gallery-img">
+                <h4>RAGHAV SETHI</h4>
+                <p>B.TECH. CSE, CLASS OF 2013</p>
+                <p><span>Year: 2022</span></p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-card">
+                <img src="assets/gallery/Apurv_Mehra_resized (1).jpg" alt="Apurv Mehra" class="gallery-img">
+                <h4>APURV MEHRA</h4>
+                <p>DUAL DEGREE CSE, CLASS OF 2014</p>
+                <p><span>Year: 2022</span></p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-card">
+                <img src="assets/gallery/Anwesh_Kumar_Sahoo_resized (1).jpg" alt="Anwesh Kumar Sahoo" class="gallery-img">
+                <h4>ANWESH KUMAR SAHOO</h4>
+                <p>B.TECH. ECE, CLASS OF 2017</p>
+                <p><span>Year: 2022</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** New Section ***** -->
+<section class="new-section">
+    <h1 style="color: teal;">Gallery</h1>
+    <div class="new-cards-container">
+        <a href="page4.html" class="new-card">
+            <img src="assets/han/images/19.jpg" alt="Card 1">
+            <div class="new-card-title">Foundation Day 2022</div>
+            
+        </a>
+        <a href="page3.html" class="new-card">
+            <img src="assets/han/images/Foundation_Day-029.jpg" alt="Card 2">
+            <div class="new-card-title">Foundation Day 2023</div>
+            
+        </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    IIIT-Delhi Young Alumni Awards
+  </footer>
+
+</body>
+</html>
