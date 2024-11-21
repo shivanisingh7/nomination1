@@ -257,7 +257,14 @@ if (!$result_someone) {
                                     }
                                     ?>
                                 </td>
-                                <td><?= htmlspecialchars($row['testimonies_file']) ?></td>
+                                <td>
+                                    <?php if (!empty($row['testimonies_file'])): ?>
+                                        <a href="uploads/<?= htmlspecialchars($row['testimonies_file']) ?>" target="_blank">Click Here</a>
+                                    <?php else: ?>
+                                        N/A
+                                    <?php endif; ?>
+                                </td>
+
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -316,7 +323,14 @@ if (!$result_someone) {
                                         N/A
                                     <?php endif; ?>
                                 </td>
-                                <td><?= htmlspecialchars($row['nominee_documents_file']) ?></td>
+                                <td>
+                                    <?php if (!empty($row['nominee_documents_file'])): ?>
+                                        <a href="uploads/<?= htmlspecialchars($row['nominee_documents_file']) ?>" target="_blank">Click Here</a>
+                                    <?php else: ?>
+                                        N/A
+                                    <?php endif; ?>
+                                </td>
+
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
