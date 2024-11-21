@@ -11,10 +11,9 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/mycss.css">
+    <link rel="stylesheet" href="assets/css/templatemo-woox-travel.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <style>
 
         .content {
@@ -205,18 +204,17 @@
 
      
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const menuTrigger = document.querySelector('.menu-trigger');
-          const nav = document.querySelector('.main-nav');
-      
-          menuTrigger.addEventListener('click', function () {
-            nav.classList.toggle('active');
-          });
-        });
-      </script>
-    
-    <script>
+
+     <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
         
         function toggleNominationFields() {
     var nomination = document.getElementById("nomination").value;
@@ -224,7 +222,7 @@
     var nomineeFields = document.getElementById("nominee-fields");
     var yourFields = document.getElementById("your-fields");
     var sharedFields = document.getElementById("shared-fields");
-    var yourRoleField = document.getElementById("your-role-field");
+    var yourRole = document.getElementById("your_role");
     var criteriaSection = document.getElementById("criteria-section");
     var selfNominationQuestion = document.getElementById("self-nomination-question");
     var nomineeSupportDocs = document.getElementById("nominee-support-docs");
@@ -237,22 +235,31 @@
         yourFields.style.display = "block"; // Show your fields
         sharedFields.style.display = "block"; // Show shared fields
 
-        // Hide Your Role in IIITD field
-        yourRoleField.classList.add("hidden");
+        // Update role options
+        yourRole.innerHTML = `
+            <option value="" disabled selected>--Select--</option>
+            <option value="fellow_alumni">Fellow Alumni</option>
+            <option value="student">Student</option>
+        `;
 
         // Show criteria section, hide self-nomination additional question
         criteriaSection.classList.remove("hidden");
-        selfNominationQuestion.classList.add("hidden");
-
-        // Hide nominee supporting documents
+        // selfNominationQuestion.classList.add("hidden");
         nomineeSupportDocs.classList.add("hidden");
     } else {
         nomineeFields.style.display = "block"; // Show nominee fields
         yourFields.style.display = "block"; // Show your fields
         sharedFields.style.display = "block"; // Show shared fields
 
-        // Show Your Role in IIITD field
-        yourRoleField.classList.remove("hidden");
+        // Update role options
+        yourRole.innerHTML = `
+            <option value="" disabled selected>--Select--</option>
+            <option value="faculty">Faculty</option>
+            <option value="staff">Staff</option>
+            <option value="fellow_alumni">Fellow Alumni</option>
+            <option value="student">Student</option>
+            <option value="other">Other</option>
+        `;
 
         // Hide criteria section and reset checkboxes
         criteriaSection.classList.add("hidden");
@@ -267,15 +274,12 @@
         document.getElementById("society-field").classList.add("hidden");
         document.getElementById("leadership-field").classList.add("hidden");
         document.getElementById("testimonies-section").classList.add("hidden");
-
-        // Show nominee supporting documents
         nomineeSupportDocs.classList.remove("hidden");
 
         // Show self-nomination additional question
         selfNominationQuestion.classList.remove("hidden");
     }
 }
-
 
 
         function toggleCriteriaFields() {
@@ -353,7 +357,7 @@
 <body>
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
+ <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -378,9 +382,10 @@
     </div>
   </header>
 
+
   <!-- ***** Header Area End ***** -->
 
-<h2>Young Alumni Award Nomination Form</h2> 
+  <h2>Young Alumni Award Nomination Form</h2> 
 <div class="banner">
     <img src="assets/images/banner.png" alt="IIIT Delhi Foundation Day Banner">
 </div> 
@@ -414,27 +419,10 @@
             <label for="your_phone">*Your Phone Number:</label>
             <input type="tel" id="your_phone" name="your_phone" required>
 
-            <!-- <label for="your_role">*Your Role in IIITD:</label>
+            <label for="your_role">*Your Role in IIITD:</label>
             <select id="your_role" name="your_role" required>
-                Options will be dynamically set based on selection
-            </select> -->
-
-            <div id="your-role-field" class="hidden">
-                <label for="your_role">*Your Role in IIITD:</label>
-                <select id="your_role" name="your_role">
-                    <option value="" disabled selected>--Select--</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="staff">Staff</option>
-                    <option value="fellow_alumni">Fellow Alumni</option>
-                    <option value="student">Student</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-        
-        
-        
-        
-        
+                <!-- Options will be dynamically set based on selection -->
+            </select>
         </div>
 
         <div id="nominee-fields" class="section hidden">
@@ -492,15 +480,14 @@
             <input type="url" id="linkedin" name="linkedin" required>
 
             <!-- Additional question for nominating someone else -->
-            <!-- <div id="self-nomination-question" class="hidden"> -->
-            <label for="self_reason">*Please briefly tell us why you feel you or your nominee should be considered for the Young Alumni Award (suggested: 200 words). 
-            </label>
-            <textarea id="self_reason" name="self_reason" rows="4"></textarea>
-            <!-- </div> -->
+            <div id="self-nomination-question">
+                <label for="self_reason">*Please briefly tell us why you feel you or your nominee should be considered for the Young Alumni Award (suggested: 200 words). </label>
+                <textarea id="self_reason" name="self_reason" rows="4"></textarea>
+            </div>
 
             <!-- Criteria Section (only for nominating yourself) -->
             <div id="criteria-section" class="hidden">
-                <h3>Please select the category you want to nominate yourself in (you can select more than one)</h3>
+                <h3>Please select the category you want to nominate yourself in(you can select more than one)</h3>
                 <input type="checkbox" name="criteria" value="contribution_field" onclick="toggleCriteriaFields()"> Notable contribution to field of work or knowledge<br>
                 <input type="checkbox" name="criteria" value="contribution_technology" onclick="toggleCriteriaFields()"> Notable contribution to technological innovation/discipline<br>
                 <input type="checkbox" name="criteria" value="contribution_society" onclick="toggleCriteriaFields()"> Notable contribution to society/community/alma mater<br>
@@ -576,13 +563,12 @@
 
         <!-- Additional question for nominating someone else -->
         <div id="nominee-support-docs" class="hidden">
-            <h3>Additional Supporting Documents</h3>
-            <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
-            <div class="file-input">
-                <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
-            </div>
+        <h3>Additional Supporting Documents</h3>
+        <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
+        <div class="file-input">
+            <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
         </div>
-        
+</div>
 
     </div>
 
@@ -614,6 +600,11 @@
   </footer>
 
   
-
+ <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
   </body>
 </html>
