@@ -167,36 +167,53 @@
     //     setInterval(changeBackground, 3000);
     
     document.addEventListener("DOMContentLoaded", function () {
-        const images = [
-            "assets/images/background1.jpeg",
-            "assets/images/background4.jpg",
-            "assets/images/background6.jpg"
-        ];
+  const images = [
+    "assets/images/background1.jpeg",
+    "assets/images/background4.jpg",
+    "assets/images/background6.jpg"
+  ];
 
-        const content = document.querySelector(".about-main-content");
-        const blurBg = document.querySelector(".blur-bg");
+  const content = document.querySelector(".about-main-content");
+  const blurBg = document.querySelector(".blur-bg");
+  let currentIndex = 0;
 
-        let currentIndex = 0;
-
-        function changeBackground() {
-            // Update both the content and the blur-bg background images
-            content.style.backgroundImage = `url('${images[currentIndex]}')`;
-            blurBg.style.backgroundImage = `url('${images[currentIndex]}')`;
-
-            // Smooth transition
-            content.style.transition = "background-image 1s ease-in-out";
-            blurBg.style.transition = "background-image 1s ease-in-out";
-
-            // Update the index for the next image
-            currentIndex = (currentIndex + 1) % images.length;
-        }
-
-        // Initial background
-        changeBackground();
-
-        // Change background every 3 seconds
-        setInterval(changeBackground, 3000);
+  // Preload images and return a promise
+  function preloadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = resolve;
+      img.onerror = reject;
     });
+  }
+
+  // Preload all images and then start the background rotation
+  async function preloadAllImages() {
+    try {
+      await Promise.all(images.map(preloadImage)); // Wait for all images to preload
+      changeBackground(); // Start changing backgrounds after preloading
+      setInterval(changeBackground, 3000); // Rotate backgrounds every 3 seconds
+    } catch (error) {
+      console.error("Error preloading images:", error);
+    }
+  }
+
+  function changeBackground() {
+    // Update both content and blur-bg background images
+    content.style.backgroundImage = `url('${images[currentIndex]}')`;
+    blurBg.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+    // Smooth transition
+    content.style.transition = "background-image 1s ease-in-out";
+    blurBg.style.transition = "background-image 1s ease-in-out";
+
+    // Move to the next image
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  // Start preloading images and initialize background changes
+  preloadAllImages();
+});
 
 
     
