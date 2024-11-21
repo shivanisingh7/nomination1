@@ -224,75 +224,155 @@
           });
         });
       </script>
+      
     
     
 
   <script>
-        
-        function toggleNominationFields() {
-    var nomination = document.getElementById("nomination").value;
-    var formContent = document.getElementById("form-content");
-    var nomineeFields = document.getElementById("nominee-fields");
-    var yourFields = document.getElementById("your-fields");
-    var sharedFields = document.getElementById("shared-fields");
-    var yourRole = document.getElementById("your_role");
-    var criteriaSection = document.getElementById("criteria-section");
-    var selfNominationQuestion = document.getElementById("self-nomination-question");
-    var nomineeSupportDocs = document.getElementById("nominee-support-docs");
 
-    // Show form content by default
-    formContent.style.display = "block";
+    // function validateCriteria() {
+    //         const criteriaCheckboxes = document.querySelectorAll('input[name="criteria"]:checked');
+    //         const criteriaError = document.getElementById("criteria-error");
 
-    if (nomination === "yourself") {
-        nomineeFields.style.display = "none"; // Hide nominee fields
-        yourFields.style.display = "block"; // Show your fields
-        sharedFields.style.display = "block"; // Show shared fields
+    //         if (criteriaCheckboxes.length === 0) {
+    //             criteriaError.style.display = "inline"; // Show error message
+    //             return false; // Prevent form submission
+    //         } else {
+    //             criteriaError.style.display = "none"; // Hide error message
+    //             return true; // Allow form submission
+    //         }
+    // }
+    // function validateTestimonies() {
+    //     const testimoniesInput = document.getElementById("testimonies");
+    //     const testimoniesError = document.getElementById("testimonies-error");
 
-        // Update role options
-        yourRole.innerHTML = `
-            <option value="" disabled selected>--Select--</option>
-            <option value="fellow_alumni">Fellow Alumni</option>
-            <option value="student">Student</option>
-        `;
+    //     if (testimoniesInput.value === "") {
+    //         testimoniesError.style.display = "inline"; // Show error message
+    //         return false; // Prevent form submission
+    //     } else {
+    //         testimoniesError.style.display = "none"; // Hide error message
+    //         return true; // Allow form submission
+    //     }
+    // }
+        function validateCriteria() {
+        const nomination = document.getElementById("nomination").value;
+        const criteriaSection = document.getElementById("criteria-section");
+        const criteriaInputs = document.querySelectorAll('input[name="criteria"]:checked');
+        const criteriaError = document.getElementById("criteria-error");
 
-        // Show criteria section, hide self-nomination additional question
-        criteriaSection.classList.remove("hidden");
-        // selfNominationQuestion.classList.add("hidden");
-        nomineeSupportDocs.classList.add("hidden");
-    } else {
-        nomineeFields.style.display = "block"; // Show nominee fields
-        yourFields.style.display = "block"; // Show your fields
-        sharedFields.style.display = "block"; // Show shared fields
-
-        // Update role options
-        yourRole.innerHTML = `
-            <option value="" disabled selected>--Select--</option>
-            <option value="faculty">Faculty</option>
-            <option value="staff">Staff</option>
-            <option value="fellow_alumni">Fellow Alumni</option>
-            <option value="student">Student</option>
-            <option value="other">Other</option>
-        `;
-
-        // Hide criteria section and reset checkboxes
-        criteriaSection.classList.add("hidden");
-        var criteriaCheckboxes = document.querySelectorAll('input[name="criteria"]');
-        criteriaCheckboxes.forEach(function (checkbox) {
-            checkbox.checked = false; // Uncheck all criteria checkboxes
-        });
-
-        // Hide all criteria-related fields
-        document.getElementById("notable-field").classList.add("hidden");
-        document.getElementById("tech-field").classList.add("hidden");
-        document.getElementById("society-field").classList.add("hidden");
-        document.getElementById("leadership-field").classList.add("hidden");
-        document.getElementById("testimonies-section").classList.add("hidden");
-        nomineeSupportDocs.classList.remove("hidden");
-
-        // Show self-nomination additional question
-        selfNominationQuestion.classList.remove("hidden");
+        if (nomination === "yourself" && criteriaInputs.length === 0) {
+            criteriaError.style.display = "inline"; // Show error message
+            return false; // Prevent form submission
+        } else {
+            criteriaError.style.display = "none"; // Hide error message
+            return true; // Allow form submission
+        }
     }
-}
+
+    function validateTestimonies() {
+        const nomination = document.getElementById("nomination").value;
+        const testimoniesInput = document.getElementById("testimonies");
+        const testimoniesError = document.getElementById("testimonies-error");
+
+        if (nomination === "yourself" && testimoniesInput.value === "") {
+            testimoniesError.style.display = "inline"; // Show error message
+            return false; // Prevent form submission
+        } else {
+            testimoniesError.style.display = "none"; // Hide error message
+            return true; // Allow form submission
+        }
+    }
+
+    function validateNomineeDocuments() {
+        const nomination = document.getElementById("nomination").value;
+        const nomineeDocumentsInput = document.getElementById("nominee_documents");
+        const nomineeDocumentsError = document.getElementById("nominee-documents-error");
+
+        if (nomination === "someone_else" && nomineeDocumentsInput.value === "") {
+            nomineeDocumentsError.style.display = "inline"; // Show error message
+            return false; // Prevent form submission
+        } else {
+            nomineeDocumentsError.style.display = "none"; // Hide error message
+            return true; // Allow form submission
+        }
+    }
+
+    function validateForm() {
+        // Always validate CAPTCHA
+        const isCaptchaValid = validateCaptcha();
+
+        // Conditionally validate criteria and testimonies based on nomination type
+        const isCriteriaValid = validateCriteria();
+        const isTestimoniesValid = validateTestimonies();
+
+        const isNomineeDocumentsValid = validateNomineeDocuments(); // Only for "Nominating Someone Else"
+
+        return isCaptchaValid && isCriteriaValid && isTestimoniesValid && isNomineeDocumentsValid;
+    }
+
+
+    function toggleNominationFields() {
+        var nomination = document.getElementById("nomination").value;
+        var formContent = document.getElementById("form-content");
+        var nomineeFields = document.getElementById("nominee-fields");
+        var yourFields = document.getElementById("your-fields");
+        var sharedFields = document.getElementById("shared-fields");
+        var yourRoleField = document.getElementById("your-role-field");
+        var criteriaSection = document.getElementById("criteria-section");
+        var selfNominationQuestion = document.getElementById("self-nomination-question");
+        var nomineeSupportDocs = document.getElementById("nominee-support-docs");
+
+        // Show form content by default
+        formContent.style.display = "block";
+
+        if (nomination === "yourself") {
+            nomineeFields.style.display = "none"; // Hide nominee fields
+            yourFields.style.display = "block"; // Show your fields
+            sharedFields.style.display = "block"; // Show shared fields
+
+            // Hide the "Your Role in IIITD" field
+            yourRoleField.style.display = "none";
+
+            // Show criteria section, hide self-nomination additional question
+            criteriaSection.classList.remove("hidden");
+            // selfNominationQuestion.classList.add("hidden");
+
+            // Hide nominee supporting documents explicitly
+            nomineeSupportDocs.style.display = "none";
+        } else if (nomination === "someone_else") {
+            nomineeFields.style.display = "block"; // Show nominee fields
+            yourFields.style.display = "block"; // Show your fields
+            sharedFields.style.display = "block"; // Show shared fields
+
+            // Show the "Your Role in IIITD" field
+            yourRoleField.style.display = "block";
+
+            // Hide criteria section and reset checkboxes
+            criteriaSection.classList.add("hidden");
+            var criteriaCheckboxes = document.querySelectorAll('input[name="criteria"]');
+            criteriaCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = false; // Uncheck all criteria checkboxes
+            });
+
+            // Hide all criteria-related fields
+            document.getElementById("notable-field").classList.add("hidden");
+            document.getElementById("tech-field").classList.add("hidden");
+            document.getElementById("society-field").classList.add("hidden");
+            document.getElementById("leadership-field").classList.add("hidden");
+            document.getElementById("testimonies-section").classList.add("hidden");
+
+            // Show nominee supporting documents explicitly
+            nomineeSupportDocs.style.display = "block";
+
+            // Show self-nomination additional question
+            selfNominationQuestion.classList.remove("hidden");
+        } else {
+            // Default behavior: hide form content
+            formContent.style.display = "none";
+        }
+    }
+
+
 
 
         function toggleCriteriaFields() {
@@ -409,7 +489,7 @@
 
 
 <!-- <form action="/submit" method="post" enctype="multipart/form-data"> -->
-    <form action="hh.php" method="post" enctype="multipart/form-data" onsubmit="return validateCaptcha()" >
+    <form action="hh.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" >
     <label for="nomination">*Who are you nominating?</label>
     <select id="nomination" name="nomination" onchange="toggleNominationFields()" required>
         <option value="" disabled selected>--Select--</option>
@@ -418,7 +498,7 @@
     </select>
 
     <div id="form-content" style="display: none;">
-        <div id="your-fields" class="section">
+        <!-- <div id="your-fields" class="section">
             <h3>Your Contact Information</h3>
             <label for="your_title">*Title:</label>
             <input type="text" id="your_title" name="your_title"  placeholder="Eg: Mr, Mrs, Miss, Dr, Prof" required>
@@ -434,8 +514,35 @@
 
             <label for="your_role">*Your Role in IIITD:</label>
             <select id="your_role" name="your_role" required>
-                <!-- Options will be dynamically set based on selection -->
+                Options will be dynamically set based on selection
             </select>
+        </div> -->
+        <div id="your-fields" class="section">
+            <h3>Your Contact Information</h3>
+            <label for="your_title">*Title:</label>
+            <input type="text" id="your_title" name="your_title" placeholder="Eg: Mr, Mrs, Miss, Dr, Prof" required>
+        
+            <label for="your_name">*Your Name:</label>
+            <input type="text" id="your_name" name="your_name" required>
+        
+            <label for="your_email">*Email ID:</label>
+            <input type="email" id="your_email" name="your_email" required>
+        
+            <label for="your_phone">*Your Phone Number:</label>
+            <input type="tel" id="your_phone" name="your_phone" required>
+        
+            <!-- Hide or show this div based on the nomination type -->
+            <div id="your-role-field">
+                <label for="your_role">*Your Role in IIITD:</label>
+                <select id="your_role" name="your_role">
+                    <option value="" disabled selected>--Select--</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="staff">Staff</option>
+                    <option value="fellow_alumni">Fellow Alumni</option>
+                    <option value="student">Student</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
         </div>
 
         <div id="nominee-fields" class="section hidden">
@@ -499,12 +606,20 @@
             </div>
 
             <!-- Criteria Section (only for nominating yourself) -->
-            <div id="criteria-section" class="hidden">
+            <!-- <div id="criteria-section" class="hidden">
                 <h3>Please select the category you want to nominate yourself in(you can select more than one)</h3>
                 <input type="checkbox" name="criteria" value="contribution_field" onclick="toggleCriteriaFields()"> Notable contribution to field of work or knowledge<br>
                 <input type="checkbox" name="criteria" value="contribution_technology" onclick="toggleCriteriaFields()"> Notable contribution to technological innovation/discipline<br>
                 <input type="checkbox" name="criteria" value="contribution_society" onclick="toggleCriteriaFields()"> Notable contribution to society/community/alma mater<br>
                 <input type="checkbox" name="criteria" value="contribution_leadership" onclick="toggleCriteriaFields()"> Notable contribution to leadership/entrepreneurship<br>
+            </div> -->
+            <div id="criteria-section" class="hidden">
+                <h3>Please select the category you want to nominate yourself in (you can select more than one)</h3>
+                <input type="checkbox" name="criteria" value="contribution_field" onclick="toggleCriteriaFields()"> Notable contribution to field of work or knowledge<br>
+                <input type="checkbox" name="criteria" value="contribution_technology" onclick="toggleCriteriaFields()"> Notable contribution to technological innovation/discipline<br>
+                <input type="checkbox" name="criteria" value="contribution_society" onclick="toggleCriteriaFields()"> Notable contribution to society/community/alma mater<br>
+                <input type="checkbox" name="criteria" value="contribution_leadership" onclick="toggleCriteriaFields()"> Notable contribution to leadership/entrepreneurship<br>
+                <span id="criteria-error" style="color: red; display: none;">* Please select at least one category.</span>
             </div>
         </div>
 
@@ -566,21 +681,48 @@
         </div>
 
         <!-- E) Testimonies (Common for all criteria) -->
+        <!-- <div id="testimonies-section" class="section hidden">
+            <h3>Testimonies</h3>
+            <label for="testimonies">Please attach documents to support your or your nominee's candidature:</label>
+            <div class="file-input">
+                <input type="file" id="testimonies" name="testimonies" accept=".pdf">
+            </div>
+        </div> -->
+        
         <div id="testimonies-section" class="section hidden">
             <h3>Testimonies</h3>
             <label for="testimonies">Please attach documents to support your or your nominee's candidature:</label>
             <div class="file-input">
                 <input type="file" id="testimonies" name="testimonies" accept=".pdf">
             </div>
+            <span id="testimonies-error" style="color: red; display: none;">* Please upload a PDF file.</span>
         </div>
 
+
         <!-- Additional question for nominating someone else -->
-        <div id="nominee-support-docs" class="hidden">
+        <!-- <div id="nominee-support-docs" class="hidden">
         <h3>Additional Supporting Documents</h3>
         <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
         <div class="file-input">
             <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
+        </div> -->
+        <!-- Supporting documents section -->
+        <!-- <div id="nominee-support-docs" class="hidden">
+            <h3>Additional Supporting Documents</h3>
+            <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
+            <div class="file-input">
+                <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
+        </div> -->
+        <div id="nominee-support-docs" class="hidden">
+            <h3>Additional Supporting Documents</h3>
+            <label for="nominee_documents">Please attach documents to support your nominee's candidature:</label>
+            <div class="file-input">
+                <input type="file" id="nominee_documents" name="nominee_documents" accept=".pdf">
+                <span id="nominee-documents-error" style="color: red; display: none;">* Please upload a document.</span>
+            </div>
         </div>
+        
+</div>
 </div>
 
     </div>
