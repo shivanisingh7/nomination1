@@ -409,37 +409,63 @@
             }
         }
 
-        let captcha; // To store the generated CAPTCHA code
+    //     let captcha; // To store the generated CAPTCHA code
 
-    // Function to generate CAPTCHA
-    function generateCaptcha() {
-        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let code = "";
-        for (let i = 0; i < 7; i++) {
-            code += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        captcha = code;
-        document.getElementById("captcha").innerText = captcha;
+    // // Function to generate CAPTCHA
+    // function generateCaptcha() {
+    //     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //     let code = "";
+    //     for (let i = 0; i < 7; i++) {
+    //         code += chars.charAt(Math.floor(Math.random() * chars.length));
+    //     }
+    //     captcha = code;
+    //     document.getElementById("captcha").innerText = captcha;
+    // }
+
+    // // Function to validate CAPTCHA
+    // function validateCaptcha() {
+    //     const userInput = document.getElementById("captchaInput").value;
+    //     const message = document.getElementById("message");
+
+    //     if (userInput === captcha) {
+    //         message.innerText = "CAPTCHA Verified Successfully!";
+    //         message.className = "message success";
+    //         return true; // Allow form submission
+    //     } else {
+    //         message.innerText = "CAPTCHA Verification Failed. Try Again!";
+    //         message.className = "message error";
+    //         return false; // Prevent form submission
+    //     }
+    // }
+
+    // // Generate CAPTCHA on page load
+    // generateCaptcha();
+ let captcha;
+
+function generateCaptcha() {
+    const captchaElement = document.getElementById("captcha");
+    // Generate a random CAPTCHA (you can customize the logic here)
+    captcha = Math.random().toString(36).substring(2, 8).toUpperCase(); // Example: Random 6-character string
+    captchaElement.innerText = captcha;
+}
+
+function validateCaptcha() {
+    const userInput = document.getElementById("captchaInput").value;
+    const message = document.getElementById("message");
+
+    if (userInput === captcha) {
+        message.innerText = "CAPTCHA Verified Successfully!";
+        message.className = "message success";
+        return true; // Allow form submission
+    } else {
+        message.innerText = "CAPTCHA Verification Failed. Try Again!";
+        message.className = "message error";
+        return false; // Prevent form submission
     }
+}
 
-    // Function to validate CAPTCHA
-    function validateCaptcha() {
-        const userInput = document.getElementById("captchaInput").value;
-        const message = document.getElementById("message");
-
-        if (userInput === captcha) {
-            message.innerText = "CAPTCHA Verified Successfully!";
-            message.className = "message success";
-            return true; // Allow form submission
-        } else {
-            message.innerText = "CAPTCHA Verification Failed. Try Again!";
-            message.className = "message error";
-            return false; // Prevent form submission
-        }
-    }
-
-    // Generate CAPTCHA on page load
-    generateCaptcha();
+// Ensure CAPTCHA is generated when the page loads
+window.onload = generateCaptcha;
 
 
     
@@ -734,7 +760,7 @@
         <span class="refresh-btn" onclick="generateCaptcha()">Refresh</span>
     </div>
     <input type="text" id="captchaInput" class="captcha-input" placeholder="Enter CAPTCHA" required /> -->
-    <div class="captcha-container">
+<!--     <div class="captcha-container">
         <div class="captcha-code" id="captcha"></div>
         <img 
           src="assets/images/captcha.jpg" 
@@ -742,7 +768,23 @@
           class="refresh-btn" 
           onclick="generateCaptcha()" />
       </div>
-      <input type="text" id="captchaInput" class="captcha-input" placeholder="Enter CAPTCHA" required />
+      <input type="text" id="captchaInput" class="captcha-input" placeholder="Enter CAPTCHA" required /> -->
+       <div class="captcha-container">
+        <div class="captcha-code" id="captcha"></div>
+        <img 
+            src="assets/images/captcha.jpg" 
+            alt="Refresh CAPTCHA" 
+            class="refresh-btn" 
+            onclick="generateCaptcha()" 
+        />
+    </div>
+    <input 
+        type="text" 
+        id="captchaInput" 
+        class="captcha-input" 
+        placeholder="Enter CAPTCHA" 
+        required 
+    />
       
 
     <div id="message" class="message"></div>
